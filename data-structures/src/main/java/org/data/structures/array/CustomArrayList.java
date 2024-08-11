@@ -64,6 +64,27 @@ public class CustomArrayList<T> {
         values[index] = valor;
     }
 
+    public void insert(int index, T valor){
+        if(index < 0 || index >= size){
+            throw new ArrayIndexOutOfBoundsException();
+        }
+        if(size == values.length){
+            T[] newArray = (T[]) new Object[size * 2];
+            for(int i = 0; i < values.length; i++){
+                newArray[i] = values[i];
+            }
+            values = newArray;
+        }
+        for(int i = size; i >= index; i--){
+            if(i == index){
+                values[i] = valor;
+            }else {
+                values[i] = values[i-1];
+            }
+        }
+        size++;
+    }
+
     public int size(){
         return size;
     }

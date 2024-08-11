@@ -22,5 +22,16 @@ public class Main {
         System.out.println("---------------------------------------");
         System.out.println("Teste do map");
         customArrayList.filter(valor -> valor > 25).map(String::valueOf).forEach(texto -> System.out.println(texto + " valor "));
+        System.out.println("---------------------------------------");
+        System.out.println("Teste do set");
+        customArrayList.set(0, 30);
+        customArrayList.forEach(System.out::println);
+        System.out.println("---------------------------------------");
+        System.out.println("Teste do insert");
+        System.out.println(customArrayList.size());
+        customArrayList.insert(3, 50);
+        System.out.println(customArrayList.size());
+        customArrayList.forEach(System.out::println);
+        System.out.println("---------------------------------------");
     }
 }
