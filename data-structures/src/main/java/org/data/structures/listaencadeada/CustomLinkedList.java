@@ -1,5 +1,8 @@
 package org.data.structures.listaencadeada;
 
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+
 public class CustomLinkedList<T> {
 
     private Node<T> first;
@@ -93,6 +96,26 @@ public class CustomLinkedList<T> {
             current = current.next;
         }
         return i;
+    }
+
+    public void forEach(Consumer<T> consumer){
+        Node<T> current = first;
+        while (current != null){
+            consumer.accept(current.getValue());
+            current = current.next;
+        }
+    }
+
+    public CustomLinkedList<T> filter(Predicate<T> predicate){
+        Node<T> current = first;
+        CustomLinkedList<T> newCustomLinkedList = new CustomLinkedList<>();
+        while(current != null){
+            if(predicate.test(current.getValue())){
+                newCustomLinkedList.add(current.getValue());
+            }
+            current = current.next;
+        }
+        return newCustomLinkedList;
     }
 
     private static class Node<T>{
