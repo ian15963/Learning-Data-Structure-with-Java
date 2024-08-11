@@ -1,6 +1,7 @@
 package org.data.structures.array;
 
 import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.function.Predicate;
 
 public class CustomArrayList<T> {
@@ -70,6 +71,14 @@ public class CustomArrayList<T> {
             if(predicate.test(values[i])){
                 newCustomArrayList.add(values[i]);
             }
+        }
+        return newCustomArrayList;
+    }
+
+    public <R> CustomArrayList<R> map(Function<T, R> function){
+        CustomArrayList<R> newCustomArrayList = new CustomArrayList<>();
+        for(int i = 0; i < size; i++){
+            newCustomArrayList.add(function.apply(values[i]));
         }
         return newCustomArrayList;
     }

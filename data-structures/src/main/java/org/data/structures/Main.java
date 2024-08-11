@@ -20,5 +20,7 @@ public class Main {
         System.out.println("Teste do filter");
         customArrayList.filter(valor -> valor > 15).forEach(System.out::println);
         System.out.println("---------------------------------------");
+        System.out.println("Teste do map");
+        customArrayList.filter(valor -> valor > 25).map(String::valueOf).forEach(texto -> System.out.println(texto + " valor "));
     }
 }
