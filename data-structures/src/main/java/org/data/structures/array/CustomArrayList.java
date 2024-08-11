@@ -29,4 +29,26 @@ public class CustomArrayList<T> {
         }
     }
 
+    public T get(int index){
+        if(index < 0 || index >= size){
+            throw new ArrayIndexOutOfBoundsException("Índice inválido");
+        }
+        return values[index];
+    }
+
+    public void remove(int index){
+        if(index < 0 || index >= size){
+            throw new ArrayIndexOutOfBoundsException();
+        }
+        for (int i = index; i < size; i++){
+            if(i == size - 1){
+                values[i] = null;
+                size--;
+            }else{
+                values[i] = values[i+1];
+            }
+
+        }
+    }
+
 }
