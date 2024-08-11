@@ -16,6 +16,20 @@ public class CustomLinkedList<T> {
         current.next = new Node<>(t);
     }
 
+    public T get(int index){
+        if(index < 0){
+            throw new ArrayIndexOutOfBoundsException();
+        }
+        Node<T> current = first;
+        for(int i = 0; i < index; i++){
+            if(current.next == null){
+                throw new ArrayIndexOutOfBoundsException();
+            }
+            current = current.next;
+        }
+        return current.getValue();
+    }
+
     private static class Node<T>{
 
         private T value;
