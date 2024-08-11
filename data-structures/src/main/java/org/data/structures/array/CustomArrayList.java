@@ -1,8 +1,10 @@
 package org.data.structures.array;
 
+import java.util.Arrays;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.stream.Stream;
 
 public class CustomArrayList<T> {
 
@@ -83,4 +85,7 @@ public class CustomArrayList<T> {
         return newCustomArrayList;
     }
 
+    public Stream<T> stream(){
+        return Arrays.stream(values);
+    }
 }
