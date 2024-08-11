@@ -8,5 +8,7 @@ public class CustomLinkedListExecutable {
         CustomLinkedList<String> customLinkedList = new CustomLinkedList<>();
         customLinkedList.add("Melão");
         System.out.println(customLinkedList.get(0));
+        customLinkedList.set(0, "Mamão");
+        System.out.println(customLinkedList.get(0));
     }
 }

@@ -30,6 +30,20 @@ public class CustomLinkedList<T> {
         return current.getValue();
     }
 
+    public void set(int index, T value){
+        if(index < 0){
+            throw new ArrayIndexOutOfBoundsException();
+        }
+        Node<T> current = first;
+        for(int i = 0; i < index; i++){
+            if(current.next == null){
+                throw new ArrayIndexOutOfBoundsException();
+            }
+            current = current.next;
+        }
+        current.setValue(value);
+    }
+
     private static class Node<T>{
 
         private T value;
