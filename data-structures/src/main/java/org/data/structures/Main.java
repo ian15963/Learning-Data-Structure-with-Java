@@ -7,5 +7,8 @@ public class Main {
         CustomArrayList<String> customArrayList = new CustomArrayList<>();
         customArrayList.add("Macarrão");
         System.out.println(customArrayList.get(0));
+        System.out.println(customArrayList.size());
+        customArrayList.remove(0);
+        System.out.println(customArrayList.size());
     }
 }

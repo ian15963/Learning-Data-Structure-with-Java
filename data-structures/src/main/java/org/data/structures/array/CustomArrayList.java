@@ -31,7 +31,7 @@ public class CustomArrayList<T> {
 
     public T get(int index){
         if(index < 0 || index >= size){
-            throw new ArrayIndexOutOfBoundsException("Índice inválido");
+            throw new ArrayIndexOutOfBoundsException();
         }
         return values[index];
     }
@@ -49,6 +49,10 @@ public class CustomArrayList<T> {
             }
 
         }
+    }
+
+    public int size(){
+        return size;
     }
 
 }
