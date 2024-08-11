@@ -14,5 +14,8 @@ public class CustomLinkedListExecutable {
         customLinkedList.insert(0, "Melancia");
         System.out.println(customLinkedList.get(1));
         System.out.println(customLinkedList.size());
+        customLinkedList.remove(0);
+        System.out.println(customLinkedList.get(0));
+        System.out.println(customLinkedList.size());
     }
 }

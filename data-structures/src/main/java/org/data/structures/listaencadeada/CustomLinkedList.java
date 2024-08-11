@@ -48,8 +48,14 @@ public class CustomLinkedList<T> {
         if(index < 0 || first == null){
             throw new ArrayIndexOutOfBoundsException();
         }
+        if(index == 0){
+            Node<T> newNode = new Node<>(t);
+            newNode.next = first;
+            first = newNode;
+            return;
+        }
         Node<T> current = first;
-        for(int i = 0; i < index; i++){
+        for(int i = 0; i < index - 1; i++){
             if(current.next == null){
                 throw new ArrayIndexOutOfBoundsException();
             }
@@ -58,6 +64,24 @@ public class CustomLinkedList<T> {
         Node<T> newNode = new Node<>(t);
         newNode.next = current.next;
         current.next = newNode;
+    }
+
+    public void remove(int index){
+        if(index < 0 || first == null){
+            throw new ArrayIndexOutOfBoundsException();
+        }
+        if(index == 0){
+            first = first.next;
+            return;
+        }
+        Node<T> current = first;
+        for(int i = 0; i < index - 1; i++){
+            if(current.next == null){
+                throw new ArrayIndexOutOfBoundsException();
+            }
+            current = current.next;
+        }
+        current.next = current.next.next;
     }
 
     public int size(){
