@@ -57,6 +57,13 @@ public class CustomArrayList<T> {
         }
     }
 
+    public void set(int index, T valor){
+        if(index < 0 || index >= size){
+            throw new ArrayIndexOutOfBoundsException();
+        }
+        values[index] = valor;
+    }
+
     public int size(){
         return size;
     }
