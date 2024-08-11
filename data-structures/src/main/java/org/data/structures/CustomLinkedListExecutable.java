@@ -12,6 +12,8 @@ public class CustomLinkedListExecutable {
         customLinkedList.forEach(System.out::println);
         System.out.println("-----------------------------");
         customLinkedList.filter(valor -> valor > 25).forEach(System.out::println);
+        System.out.println("-----------------------------");
+        customLinkedList.filter(valor -> valor > 25).map(valor -> String.valueOf(valor).concat(" Olá")).forEach(System.out::println);
 //        customLinkedList.add("Melão");
 //        System.out.println(customLinkedList.get(0));
 //        customLinkedList.set(0, "Mamão");

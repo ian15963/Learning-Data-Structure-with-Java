@@ -1,6 +1,7 @@
 package org.data.structures.listaencadeada;
 
 import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.function.Predicate;
 
 public class CustomLinkedList<T> {
@@ -113,6 +114,16 @@ public class CustomLinkedList<T> {
             if(predicate.test(current.getValue())){
                 newCustomLinkedList.add(current.getValue());
             }
+            current = current.next;
+        }
+        return newCustomLinkedList;
+    }
+
+    public <R> CustomLinkedList<R> map(Function<T, R> function){
+        Node<T> current = first;
+        CustomLinkedList<R> newCustomLinkedList = new CustomLinkedList<>();
+        while(current != null){
+            newCustomLinkedList.add(function.apply(current.getValue()));
             current = current.next;
         }
         return newCustomLinkedList;
