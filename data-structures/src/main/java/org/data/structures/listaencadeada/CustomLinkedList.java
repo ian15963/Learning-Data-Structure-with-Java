@@ -31,7 +31,7 @@ public class CustomLinkedList<T> {
     }
 
     public void set(int index, T value){
-        if(index < 0){
+        if(index < 0 || first == null){
             throw new ArrayIndexOutOfBoundsException();
         }
         Node<T> current = first;
@@ -42,6 +42,33 @@ public class CustomLinkedList<T> {
             current = current.next;
         }
         current.setValue(value);
+    }
+
+    public void insert(int index, T t){
+        if(index < 0 || first == null){
+            throw new ArrayIndexOutOfBoundsException();
+        }
+        Node<T> current = first;
+        for(int i = 0; i < index; i++){
+            if(current.next == null){
+                throw new ArrayIndexOutOfBoundsException();
+            }
+            current = current.next;
+        }
+        Node<T> newNode = new Node<>(t);
+        newNode.next = current.next;
+        current.next = newNode;
+    }
+
+    public int size(){
+        int i = 0;
+        Node<T> current = first;
+        if(current != null) i++;
+        while(current.next != null){
+            i++;
+            current = current.next;
+        }
+        return i;
     }
 
     private static class Node<T>{

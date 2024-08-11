@@ -10,5 +10,9 @@ public class CustomLinkedListExecutable {
         System.out.println(customLinkedList.get(0));
         customLinkedList.set(0, "Mamão");
         System.out.println(customLinkedList.get(0));
+        System.out.println(customLinkedList.size());
+        customLinkedList.insert(0, "Melancia");
+        System.out.println(customLinkedList.get(1));
+        System.out.println(customLinkedList.size());
     }
 }
