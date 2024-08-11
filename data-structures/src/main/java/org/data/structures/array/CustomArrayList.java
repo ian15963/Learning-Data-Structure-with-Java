@@ -1,6 +1,7 @@
 package org.data.structures.array;
 
 import java.util.function.Consumer;
+import java.util.function.Predicate;
 
 public class CustomArrayList<T> {
 
@@ -61,6 +62,16 @@ public class CustomArrayList<T> {
         for(int i = 0; i < size; i++){
             consumer.accept(values[i]);
         }
+    }
+
+    public CustomArrayList<T> filter(Predicate<T> predicate){
+        CustomArrayList<T> newCustomArrayList = new CustomArrayList<>();
+        for(int i = 0; i < size; i++){
+            if(predicate.test(values[i])){
+                newCustomArrayList.add(values[i]);
+            }
+        }
+        return newCustomArrayList;
     }
 
 }
