@@ -1,5 +1,7 @@
 package org.data.structures.array;
 
+import java.util.function.Consumer;
+
 public class CustomArrayList<T> {
 
     private T[] values;
@@ -53,6 +55,12 @@ public class CustomArrayList<T> {
 
     public int size(){
         return size;
+    }
+
+    public void forEach(Consumer<T> consumer) {
+        for(int i = 0; i < size; i++){
+            consumer.accept(values[i]);
+        }
     }
 
 }
