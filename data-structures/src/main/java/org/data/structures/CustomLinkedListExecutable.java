@@ -9,6 +9,7 @@ public class CustomLinkedListExecutable {
         for(int i = 0; i < 30; i++){
             customLinkedList.add(i+1);
         }
+        System.out.println(customLinkedList.get(1));
         customLinkedList.forEach(System.out::println);
         System.out.println("-----------------------------");
         customLinkedList.filter(valor -> valor > 25).forEach(System.out::println);
