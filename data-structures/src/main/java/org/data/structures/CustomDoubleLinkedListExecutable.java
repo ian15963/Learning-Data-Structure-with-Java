@@ -11,10 +11,8 @@ public class CustomDoubleLinkedListExecutable {
         linkedList.add("Olá, mundo!");
         linkedList.add("Batata");
         linkedList.add("Mamão");
-//        linkedList.insert("Abacate", 1);
-//        linkedList.set("Abacaxi", 1);
-//        System.out.println(linkedList.get(2));
-        linkedList.remove("Batata");
+        linkedList.set("Abacaxi",2);
+        System.out.println(linkedList.getLast());
         System.out.println(linkedList);
     }
 

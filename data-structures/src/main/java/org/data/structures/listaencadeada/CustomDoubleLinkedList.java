@@ -8,6 +8,7 @@ public class CustomDoubleLinkedList<T> {
     public void add(T value){
         if(first == null){
             first = new Node<>(value);
+            last = first;
             return;
         }
         Node<T> current = first;
@@ -17,6 +18,7 @@ public class CustomDoubleLinkedList<T> {
         Node<T> newNode = new Node<>(value);
         newNode.previous = current;
         current.next = newNode;
+        last = newNode;
     }
 
     public void set(T value, int indice){
@@ -37,12 +39,14 @@ public class CustomDoubleLinkedList<T> {
             first = newNode;
             return;
         }
-        if (current.next != null){
-            current.next.previous = newNode;
+        if (current == last){
+            newNode.previous = last.previous;
+            last.previous.next = newNode;
+            last = newNode;
+            return;
         }
-        if (current.previous != null){
-            current.previous.next = newNode;
-        }
+        current.next.previous = newNode;
+        current.previous.next = newNode;
         newNode.previous = current.previous;
         newNode.next = current.next;
     }
@@ -63,6 +67,12 @@ public class CustomDoubleLinkedList<T> {
             newNode.next = first;
             first.previous = newNode;
             first = newNode;
+            return;
+        }
+        if (current == last){
+            newNode.previous = last;
+            last.next = newNode;
+            last = newNode;
             return;
         }
         current.previous.next = newNode;
@@ -87,11 +97,13 @@ public class CustomDoubleLinkedList<T> {
             first.previous = null;
             return;
         }
-        current.previous.next = current.next;
-        if (current.next != null){
-            current.next.previous = current.previous;
+        if (current == last){
+            last = current.previous;
+            last.previous = null;
+            return;
         }
-
+        current.previous.next = current.next;
+        current.next.previous = current.previous;
     }
 
     public T get(int indice){
@@ -107,6 +119,14 @@ public class CustomDoubleLinkedList<T> {
         }
 
         return current.getValue();
+    }
+
+    public T getLast(){
+        return last.getValue();
+    }
+
+    public T getFirst(){
+        return first.getValue();
     }
 
     private static class Node<T>{
