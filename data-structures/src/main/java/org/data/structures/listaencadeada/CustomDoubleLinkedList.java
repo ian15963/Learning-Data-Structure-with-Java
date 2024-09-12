@@ -99,7 +99,7 @@ public class CustomDoubleLinkedList<T> {
         }
         if (current == last){
             last = current.previous;
-            last.previous = null;
+            last.next = null;
             return;
         }
         current.previous.next = current.next;
