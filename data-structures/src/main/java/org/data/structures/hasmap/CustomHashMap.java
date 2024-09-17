@@ -1,7 +1,5 @@
 package org.data.structures.hasmap;
 
-import java.util.Arrays;
-
 public class CustomHashMap<K, V> {
 
     private static final int DEFAULT_CAPACITY = 16;
@@ -34,11 +32,32 @@ public class CustomHashMap<K, V> {
         }
         node = new Entry<>(key, value);
         node.next = table[index];
-        table[index] = node.next;
+        table[index] = node;
         if(size > capacity * loadFactor){
             Entry<K, V>[] newTable = (Entry<K, V>[]) new Entry[capacity * 2];
             System.arraycopy(table, 0, newTable, 0, newTable.length);
         }
+    }
+
+    public V get(K key){
+        if (table.length == 0){
+            throw new ArrayIndexOutOfBoundsException();
+        }
+        int indice = hash(key);
+        Entry<K, V> node = table[indice];
+
+        while (node != null){
+            if (key.equals(node.key)){
+                break;
+            }
+            node = node.next;
+        }
+
+        if (node == null){
+            throw new IllegalArgumentException("invalid Key");
+        }
+
+        return node.value;
     }
 
     private static class Entry<K,V>{
