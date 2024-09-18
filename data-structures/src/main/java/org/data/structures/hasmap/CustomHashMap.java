@@ -40,9 +40,6 @@ public class CustomHashMap<K, V> {
     }
 
     public V get(K key){
-        if (table.length == 0){
-            throw new ArrayIndexOutOfBoundsException();
-        }
         int indice = hash(key);
         Entry<K, V> node = table[indice];
 
@@ -58,6 +55,31 @@ public class CustomHashMap<K, V> {
         }
 
         return node.value;
+    }
+
+    public V remove(K key){
+        int indice = hash(key);
+        Entry<K, V> node = table[indice];
+        V value = null;
+        if (node.next == null){
+            value = node.value;
+        }
+        while (node != null){
+            if (node.next != null){
+                if (node.next.key.equals(key)){
+                    value = node.next.value;
+                    node.next = node.next.next;
+                    break;
+                }
+            }
+            node = node.next;
+        }
+
+        if (value == null){
+            throw new IllegalArgumentException("invalid key");
+        }
+
+        return value;
     }
 
     private static class Entry<K,V>{

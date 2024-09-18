@@ -8,5 +8,6 @@ public class CustomHashMapExecutable {
         CustomHashMap<String, Integer> customHashMap = new CustomHashMap<>();
         customHashMap.put("arroz", 1);
         System.out.println(customHashMap.get("arroz"));
+        System.out.println(customHashMap.remove("arroz"));
     }
 }
