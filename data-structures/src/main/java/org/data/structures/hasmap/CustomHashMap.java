@@ -30,12 +30,16 @@ public class CustomHashMap<K, V> {
             }
             node = node.next;
         }
+        if (table[index] == null){
+            size++;
+        }
         node = new Entry<>(key, value);
         node.next = table[index];
         table[index] = node;
         if(size > capacity * loadFactor){
             Entry<K, V>[] newTable = (Entry<K, V>[]) new Entry[capacity * 2];
             System.arraycopy(table, 0, newTable, 0, newTable.length);
+            table = newTable;
         }
     }
 
@@ -63,14 +67,13 @@ public class CustomHashMap<K, V> {
         V value = null;
         if (node.next == null){
             value = node.value;
+            table[indice] = null;
         }
         while (node != null){
-            if (node.next != null){
-                if (node.next.key.equals(key)){
-                    value = node.next.value;
-                    node.next = node.next.next;
-                    break;
-                }
+            if (node.next != null && node.next.key.equals(key)){
+                value = node.next.value;
+                node.next = node.next.next;
+                break;
             }
             node = node.next;
         }
@@ -79,7 +82,31 @@ public class CustomHashMap<K, V> {
             throw new IllegalArgumentException("invalid key");
         }
 
+        size--;
         return value;
+    }
+
+    public boolean remove(K key, V value){
+        int indice = hash(key);
+        Entry<K, V> node = table[indice];
+        if (node == null){
+            return false;
+        }
+        if (node.next == null && node.key.equals(key) && node.value.equals(value)){
+            table[indice] = null;
+            return true;
+        }
+        while(node != null){
+            if (node.next != null){
+                if (node.next.key.equals(key) && node.next.value.equals(value)){
+                    node.next = node.next.next;
+                    return true;
+                }
+            }
+            node = node.next;
+        }
+
+        return false;
     }
 
     private static class Entry<K,V>{
@@ -95,7 +122,7 @@ public class CustomHashMap<K, V> {
 
 
     private int hash(K key){
-        return key.hashCode() % capacity;
+        return key.hashCode() % capacity >= 0 ? key.hashCode() % capacity : capacity - 1;
     }
 
 }
