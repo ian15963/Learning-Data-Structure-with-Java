@@ -46,6 +46,8 @@ public class Graph<T> {
         return count;
     }
 
-    
+    public List<T> neighbours(T vertex){
+        return map.get(vertex);
+    }
 
 }
