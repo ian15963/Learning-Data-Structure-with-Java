@@ -148,6 +148,18 @@ public class CustomHashMap<K, V> {
         return entries;
     }
 
+    public boolean containsKey(K k){
+        int indice = hash(k);
+        Entry<K, V> node = table[indice];
+        while(node != null){
+            if (node.key.equals(k)){
+                return true;
+            }
+            node = node.next;
+        }
+        return false;
+    }
+
     private static class Entry<K,V>{
         final K key;
         V value;
@@ -161,7 +173,7 @@ public class CustomHashMap<K, V> {
 
 
     private int hash(K key){
-        return key.hashCode() % capacity >= 0 ? key.hashCode() % capacity : capacity - 1;
+        return Math.max(key.hashCode() % capacity, 0);
     }
 
 }
