@@ -1,5 +1,11 @@
 package org.data.structures.hasmap;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 public class CustomHashMap<K, V> {
 
     private static final int DEFAULT_CAPACITY = 16;
@@ -22,6 +28,9 @@ public class CustomHashMap<K, V> {
 
     public void put(K key, V value){
         int index = hash(key);
+        if (value == null){
+            throw new IllegalArgumentException();
+        }
         Entry<K, V> node = table[index];
         while (node != null){
             if (node.key.equals(key)){
@@ -107,6 +116,36 @@ public class CustomHashMap<K, V> {
         }
 
         return false;
+    }
+
+    public Set<K> keySet(){
+        Set<K> keys = new HashSet<>();
+        for (Entry<K, V> entry: table){
+            if (entry != null){
+                keys.add(entry.key);
+            }
+        }
+        return keys;
+    }
+
+    public Collection<V> values(){
+        List<V> values = new ArrayList<>();
+        for (Entry<K, V> entry: table){
+            if (entry != null){
+                values.add(entry.value);
+            }
+        }
+        return values;
+    }
+
+    public Set<Entry<K, V>> entrySet(){
+        Set<Entry<K, V>> entries = new HashSet<>();
+        for (Entry<K, V> entry: table){
+            if (entry != null){
+                entries.add(entry);
+            }
+        }
+        return entries;
     }
 
     private static class Entry<K,V>{
