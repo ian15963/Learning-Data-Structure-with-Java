@@ -13,6 +13,7 @@ public class CustomArrayList<T> {
 
     public CustomArrayList() {
         this.values = (T[]) new Object[16];
+        size = 0;
     }
 
     public CustomArrayList(T[] values) {
@@ -115,5 +116,17 @@ public class CustomArrayList<T> {
 
     public Stream<T> stream(){
         return Arrays.stream(values);
+    }
+
+    public boolean contains(T valor){
+        CustomArrayList<T> filteredList = filter((value) -> value.equals(valor));
+        if (filteredList.isEmpty()){
+            return false;
+        }
+        return true;
+    }
+
+    public boolean isEmpty(){
+        return size == 0;
     }
 }

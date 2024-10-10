@@ -8,12 +8,20 @@ import java.util.List;
 public class Graph<T> {
 
     private CustomHashMap<T, List<T>> map = new CustomHashMap<>();
+    private T firstVertex = null;
 
     public void addVertex(T vertex){
+        if (firstVertex == null){
+            firstVertex = vertex;
+        }
         map.put(vertex, new ArrayList<>());
     }
 
     public void addEdge(T source, T destination, boolean bidirection){
+
+        if (firstVertex == null){
+            firstVertex = source;
+        }
 
         if (!map.containsKey(source)){
             map.put(source, new ArrayList<>());
@@ -50,4 +58,7 @@ public class Graph<T> {
         return map.get(vertex);
     }
 
+    public T getFirstVertex() {
+        return firstVertex;
+    }
 }
