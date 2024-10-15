@@ -1,11 +1,8 @@
-package org.data.structures;
+package org.data.structures.executables;
 
 import org.data.structures.algorithm.PesquisaEmLargura;
 import org.data.structures.graphs.Graph;
 import org.data.structures.graphs.WeightedGraph;
-
-import java.util.PriorityQueue;
-import java.util.Queue;
 
 public class CustomGraphsExecutable {
 

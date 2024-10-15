@@ -1,8 +1,6 @@
-package org.data.structures;
+package org.data.structures.executables;
 
 import org.data.structures.listaencadeada.CustomDoubleLinkedList;
-
-import java.util.LinkedList;
 
 public class CustomDoubleLinkedListExecutable {
 

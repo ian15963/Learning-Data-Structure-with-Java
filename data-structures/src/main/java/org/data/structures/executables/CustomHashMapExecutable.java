@@ -1,9 +1,6 @@
-package org.data.structures;
+package org.data.structures.executables;
 
 import org.data.structures.hasmap.CustomHashMap;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class CustomHashMapExecutable {
 

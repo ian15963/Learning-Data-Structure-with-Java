@@ -1,8 +1,10 @@
-package org.data.structures;
+package org.data.structures.executables;
+
+import org.data.structures.array.CustomArrayList;
 
 public class CustomArrayListExecutable {
     public static void main(String[] args) {
-        org.data.structures.array.CustomArrayList<Integer> customArrayList = new org.data.structures.array.CustomArrayList<>();
+        CustomArrayList<Integer> customArrayList = new CustomArrayList<>();
         for(int i = 0; i < 30; i++){
             customArrayList.add(i);
         }
